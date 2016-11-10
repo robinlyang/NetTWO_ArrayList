@@ -7,6 +7,16 @@ using System.Collections;
 
 namespace NetTWO_ArrayList
 {
+    class worker
+    {
+        public string name;
+        public int[] hours = new int[7];
+        public int this[int x] //Indexor
+        {
+            get { return hours[x]; }
+            set { hours[x] = value; }
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -55,6 +65,29 @@ namespace NetTWO_ArrayList
             qq.Enqueue(200);
             qq.Enqueue(400);
             Console.WriteLine(qq.Dequeue());//shows and removes first one entered into queue (i.e. 100)
+            //Indexor - Microsoft concept
+            worker w = new worker();
+            w.hours[3] = 5;
+            w[3] = 5; // using the Indexor make it the same as above
+            worker[] w2 = new worker[10];
+            w2[0] = new worker(); //required for array class
+            w2[0].name = "Bob";
+            //Generic Collections
+            SortedList<string, worker> data = new SortedList<string, worker>();
+            worker w3 = new worker();
+            w3.name = "bob";
+            w3.hours[3] = 5;
+            data["Monday"] = w3;
+            Console.WriteLine(data["Monday"].name);
+            List<int> num = new List<int>(); //like an arraylist
+            num.Add(100);
+            num.Add(200);
+            total = 0;
+            for(int x2 = 0; x2 < num.Count; x2++)
+            {
+                total = total + num[x2];
+            }
+            Console.WriteLine(total);
 
             Console.ReadLine();
         }
